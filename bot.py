@@ -36,5 +36,6 @@ async def main():
     await application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    # Aquí no es necesario usar asyncio.run()
+    # Se usa directamente application.run_polling() que maneja el ciclo de eventos
+    main()
