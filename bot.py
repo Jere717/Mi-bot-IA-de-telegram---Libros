@@ -18,8 +18,22 @@ COMANDOS = {
     "ayuda": {
         "func": "ayuda",
         "descripcion": "Ver esta ayuda"
+    },
+    "bienvenida": {
+        "func": "bienvenida_comando",
+        "descripcion": "Ver el mensaje de bienvenida"
     }
 }
+
+# Función para generar el mensaje de bienvenida
+def generar_mensaje_bienvenida(new_member_name):
+    return (
+        f"👋 ¡Hola {new_member_name}, como estas? 👋\n"
+        "¡Bienvenid@ a nuestro grupo! 📚\n\n"
+        "En el grupo encontrarás libros y resúmenes compartidos por todos.\n\n"
+        "✅Te invitamos al canal privado, para acceder a libros y resúmenes exclusivos aportados únicamente por el admin, uniéndote con el botón de abajo.\n\n"
+        "✅Tambien puedes comprar el libro que no encuentras escribiéndole al admin @jere717"
+    )
 
 # Comando de bienvenida (para nuevos miembros)
 async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -34,11 +48,34 @@ async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
             
+            # Generar el mensaje de bienvenida
+            mensaje_bienvenida = generar_mensaje_bienvenida(new_member.first_name)
+            
             # Enviar mensaje de bienvenida con botones
             await update.message.reply_text(
-                f"👋 ¡Hola {new_member.first_name}! Bienvenido al grupo. Escribe /ayuda para ver los comandos disponibles.",
+                mensaje_bienvenida,
                 reply_markup=reply_markup
             )
+
+# Comando /bienvenida (para ver el mensaje de bienvenida manualmente)
+async def bienvenida_comando(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Crear los botones
+    keyboard = [
+        [
+            InlineKeyboardButton("Únete al canal", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
+            InlineKeyboardButton("Comprar libros", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
+        ]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    # Generar el mensaje de bienvenida
+    mensaje_bienvenida = generar_mensaje_bienvenida(update.message.from_user.first_name)
+    
+    # Enviar el mensaje de bienvenida con botones
+    await update.message.reply_text(
+        mensaje_bienvenida,
+        reply_markup=reply_markup
+    )
 
 # Comando /listadelibros
 async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
