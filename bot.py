@@ -33,9 +33,9 @@ async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = (
         "📚 Aquí tienes nuestra lista de libros recomendados:\n"
-        "1. El Principito\n"
-        "2. Cien años de soledad\n"
-        "3. Rayuela\n"
+        "1. 48 Leyes del poder\n"
+        "2. El hombre en busca de sentido\n"
+        "3. El principito\n"
         "Escribe /ayuda para más información."
     )
     await update.message.reply_text(respuesta)
