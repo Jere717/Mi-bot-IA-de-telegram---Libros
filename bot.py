@@ -11,8 +11,8 @@ COMANDOS = {
         "func": "lista_de_libros",
         "descripcion": "Ver lista de libros recomendados"
     },
-    "contacto": {
-        "func": "informacion_contacto",
+    "comprarlibros": {
+        "func": "comprar_libros",
         "descripcion": "Obtener información de contacto para compra de libros"
     },
     "ayuda": {
@@ -41,9 +41,9 @@ async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(respuesta)
 
 # Comando /contacto
-async def informacion_contacto(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def comprar_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = (
-        "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @usuario\n"
+        "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @jere717\n"
         "¡Estaré encantado de ayudarte!"
     )
     await update.message.reply_text(respuesta)
