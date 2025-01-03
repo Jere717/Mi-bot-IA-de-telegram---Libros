@@ -32,7 +32,7 @@ def generar_mensaje_bienvenida(new_member_name):
         "¡Bienvenid@ a nuestro grupo! 📚\n\n"
         "En el grupo encontrarás libros y resúmenes compartidos por todos.\n\n"
         "✅Te invitamos al canal privado, para acceder a libros y resúmenes exclusivos aportados únicamente por el admin, uniéndote con el botón de abajo.\n\n"
-        "✅Tambien puedes comprar el libro que no encuentras escribiéndole al admin @jere717"
+        "✅Tambien puedes comprar el libro que no encuentras escribiéndole al admin @gaspar_111"
     )
 
 # Comando de bienvenida (para nuevos miembros)
@@ -43,7 +43,7 @@ async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
             keyboard = [
                 [
                     InlineKeyboardButton("Unirme al canal 💬", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
-                    InlineKeyboardButton("Comprar libros 📚", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
+                    InlineKeyboardButton("Comprar libros 📚", url="https://t.me/gaspar_111")  # Reemplaza con tu nombre de usuario
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
@@ -63,7 +63,7 @@ async def bienvenida_comando(update: Update, context: ContextTypes.DEFAULT_TYPE)
     keyboard = [
         [
             InlineKeyboardButton("Únete al canal", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
-            InlineKeyboardButton("Comprar libros", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
+            InlineKeyboardButton("Comprar libros", url="https://t.me/gaspar_111")  # Reemplaza con tu nombre de usuario
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -91,7 +91,7 @@ async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Comando /contacto
 async def comprar_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = (
-        "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @jere717\n"
+        "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @gaspar_111\n"
         "¡Estaré encantado de ayudarte!"
     )
     await update.message.reply_text(respuesta)
