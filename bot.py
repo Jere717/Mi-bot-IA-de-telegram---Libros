@@ -18,11 +18,11 @@ COMANDOS = {
     "ayuda": {
         "func": "ayuda",
         "descripcion": "Ver esta ayuda"
-    },
-    "bienvenida": {
-        "func": "bienvenida_comando",
-        "descripcion": "Ver el mensaje de bienvenida"
     }
+    # "bienvenida": {
+    #     "func": "bienvenida_comando",
+    #     "descripcion": "Ver el mensaje de bienvenida"
+    # }
 }
 
 # Función para generar el mensaje de bienvenida
@@ -42,8 +42,8 @@ async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Crear los botones
             keyboard = [
                 [
-                    InlineKeyboardButton("Únete al canal", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
-                    InlineKeyboardButton("Comprar libros", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
+                    InlineKeyboardButton("Unirme al canal 💬", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
+                    InlineKeyboardButton("Comprar libros 📚", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
