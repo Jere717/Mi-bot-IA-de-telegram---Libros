@@ -38,9 +38,7 @@ async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "3. Rayuela\n"
         "Escribe /ayuda para más información."
     )
-    # Enviar la respuesta de manera privada al usuario que ejecutó el comando
-    user_id = update.message.from_user.id
-    await context.bot.send_message(chat_id=user_id, text=respuesta)
+    await update.message.reply_text(respuesta)
 
 # Comando /contacto
 async def informacion_contacto(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -48,18 +46,14 @@ async def informacion_contacto(update: Update, context: ContextTypes.DEFAULT_TYP
         "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @usuario\n"
         "¡Estaré encantado de ayudarte!"
     )
-    # Enviar la respuesta de manera privada al usuario que ejecutó el comando
-    user_id = update.message.from_user.id
-    await context.bot.send_message(chat_id=user_id, text=respuesta)
+    await update.message.reply_text(respuesta)
 
 # Comando /ayuda
 async def ayuda(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = "🤖 Comandos disponibles:\n"
     for comando, info in COMANDOS.items():
         respuesta += f"/{comando} - {info['descripcion']}\n"
-    # Enviar la respuesta de manera privada al usuario que ejecutó el comando
-    user_id = update.message.from_user.id
-    await context.bot.send_message(chat_id=user_id, text=respuesta)
+    await update.message.reply_text(respuesta)
 
 # Manejador para mensajes no reconocidos
 async def mensaje_no_reconocido(update: Update, context: ContextTypes.DEFAULT_TYPE):
