@@ -1,5 +1,5 @@
 import os
-from telegram import Update
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 # Token del bot (cambia esto por tu propio token del BotFather)
@@ -25,8 +25,19 @@ COMANDOS = {
 async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.new_chat_members:
         for new_member in update.message.new_chat_members:
+            # Crear los botones
+            keyboard = [
+                [
+                    InlineKeyboardButton("Únete al canal", url="https://t.me/+818Gc88EOOo0NTQx"),  # Reemplaza con tu canal
+                    InlineKeyboardButton("Comprar libros", url="https://t.me/jere717")  # Reemplaza con tu nombre de usuario
+                ]
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            # Enviar mensaje de bienvenida con botones
             await update.message.reply_text(
-                f"👋 ¡Hola {new_member.first_name}! Bienvenido al grupo. Escribe /ayuda para ver los comandos disponibles."
+                f"👋 ¡Hola {new_member.first_name}! Bienvenido al grupo. Escribe /ayuda para ver los comandos disponibles.",
+                reply_markup=reply_markup
             )
 
 # Comando /listadelibros
