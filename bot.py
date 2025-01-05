@@ -13,6 +13,9 @@ logging.basicConfig(
 # Token del bot
 TOKEN = "7699790718:AAFFtZ1LFiRdE3JnVK01DpFK7U6WM625j2o"
 
+# Usuario autorizado (tu nombre de usuario)
+USUARIO_AUTORIZADO = "@gaspar_111"  # Cambia esto si es necesario
+
 # Diccionario de comandos y respuestas
 COMANDOS = {
     "listadelibros": {
@@ -53,6 +56,25 @@ async def bienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
             mensaje_bienvenida = generar_mensaje_bienvenida(new_member.first_name)
             await update.message.reply_text(mensaje_bienvenida, reply_markup=reply_markup)
 
+# Nuevo comando: /enviarbienvenida (solo para ti)
+async def enviarbienvenida(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Verificar si quien envió el comando es el usuario autorizado
+    usuario = update.message.from_user
+    if usuario.username == USUARIO_AUTORIZADO.strip("@"):
+        # Enviar el mensaje de bienvenida
+        keyboard = [
+            [
+                InlineKeyboardButton("Unirme al canal 💬", url="https://t.me/+818Gc88EOOo0NTQx"),
+                InlineKeyboardButton("Comprar libros 📚", url="https://t.me/gaspar_111")
+            ]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        mensaje_bienvenida = generar_mensaje_bienvenida(usuario.first_name)
+        await update.message.reply_text(mensaje_bienvenida, reply_markup=reply_markup)
+    else:
+        # Responder si el usuario no está autorizado
+        await update.message.reply_text("⚠️ Lo siento, este comando solo está disponible para el administrador.")
+
 async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = (
         "📚 Aquí tienes nuestra lista de libros recomendados:\n"
@@ -74,6 +96,7 @@ async def ayuda(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = "🤖 Comandos disponibles:\n"
     for comando, info in COMANDOS.items():
         respuesta += f"/{comando} - {info['descripcion']}\n"
+    respuesta += "/enviarbienvenida - Enviar el mensaje de bienvenida (solo administrador)\n"
     await update.message.reply_text(respuesta)
 
 # Manejador para mensajes no reconocidos
@@ -94,6 +117,9 @@ def main():
     for comando, info in COMANDOS.items():
         func = globals()[info["func"]]
         application.add_handler(CommandHandler(comando, func))
+
+    # Agregar el nuevo comando /enviarbienvenida
+    application.add_handler(CommandHandler("enviarbienvenida", enviarbienvenida))
 
     # Manejadores adicionales
     application.add_handler(MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, bienvenida))
