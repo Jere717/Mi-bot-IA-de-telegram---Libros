@@ -32,8 +32,8 @@ COMANDOS = {
 # Generador de mensajes de bienvenida
 def generar_mensaje_bienvenida(nombre_usuario):
     return (
-        f"👋 ¡Hola {nombre_usuario}, como estas? 👋\n"
-        "¡Bienvenid@ a nuestro grupo! 📚\n\n"
+        f"¡Hola {nombre_usuario}, como estas? 👋\n"
+        "¡Bienvenid@ a nuestro grupo Multi Libros Chat! 📚\n\n"
         "En el grupo encontrarás libros y resúmenes compartidos por todos.\n\n"
         "✅ Te invitamos al canal privado para acceder a libros y resúmenes exclusivos aportados únicamente por el admin, uniéndote con el botón de abajo.\n\n"
         "✅ También puedes comprar el libro que no encuentras escribiéndole al admin @gaspar_111"
@@ -65,7 +65,7 @@ async def lista_de_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def comprar_libros(update: Update, context: ContextTypes.DEFAULT_TYPE):
     respuesta = (
-        "📞 Si deseas comprar libros, contáctame directamente a través de Telegram @gaspar_111\n"
+        "📞 ¿No encuentras un libro? Yo te lo consigo, contáctame directamente a través de Telegram @gaspar_111\n"
         "¡Estaré encantado de ayudarte!"
     )
     await update.message.reply_text(respuesta)
