@@ -83,7 +83,7 @@ async def mensaje_no_reconocido(update: Update, context: ContextTypes.DEFAULT_TY
     # Comprobar si el mensaje es un comando no reconocido
     if mensaje.text and mensaje.text.startswith("/"):
         await mensaje.reply_text(
-            "⚠️ Lo siento, no entiendo ese comando. Escribe /ayuda para ver los comandos disponibles."
+            "⚠️ Lo siento, no existe ese comando.\n Escribe /ayuda para ver los comandos disponibles."
         )
 
 # Inicialización del bot
